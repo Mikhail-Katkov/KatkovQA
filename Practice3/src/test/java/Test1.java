@@ -1,19 +1,22 @@
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
-public class TEST {
+public class Test1 {
     private WebDriver driver;
     private String baseUrl;
     JavascriptExecutor js;
+
     @Before
     public void setUp() throws Exception {
         System.setProperty("webdriver.chrome.driver", "src/test/chromedriver.exe");
@@ -28,24 +31,24 @@ public class TEST {
     public void testUntitledTestCase() throws Exception {
         driver.get(baseUrl);
         driver.findElement(By.id("input-card-number")).click();
+        driver.findElement(By.id("input-card-number")).clear();
+        driver.findElement(By.id("input-card-number")).sendKeys("4000 0000 0000 0002");
         driver.findElement(By.id("input-card-holder")).click();
         driver.findElement(By.id("input-card-holder")).clear();
-        driver.findElement(By.id("input-card-holder")).sendKeys("4000 0000 0000 0036");
+        driver.findElement(By.id("input-card-holder")).sendKeys("CHUCK MORRISA");
         driver.findElement(By.id("card-expires-month")).click();
-        new Select(driver.findElement(By.id("card-expires-month"))).selectByVisibleText("06");
+        new Select(driver.findElement(By.id("card-expires-month"))).selectByVisibleText("07");
         driver.findElement(By.id("card-expires-year")).click();
-        new Select(driver.findElement(By.id("card-expires-year"))).selectByVisibleText("2025");
+        new Select(driver.findElement(By.id("card-expires-year"))).selectByVisibleText("2037");
         driver.findElement(By.id("input-card-cvc")).click();
         driver.findElement(By.id("input-card-cvc")).clear();
         driver.findElement(By.id("input-card-cvc")).sendKeys("123");
         driver.findElement(By.id("action-submit")).click();
-        driver.get("https://sandbox.cardpay.com/acs-emulator/dummy?p1=v1&p2=v2");
-        driver.findElement(By.id("success")).click();
-        driver.get("https://sandbox.cardpay.com/MI/cardpayment2.html?bank_id=sandbox");
-            assertEquals("EUR   291.86", driver.findElement(By.xpath("//div[@id='payment-item-total']/div[2]")).getText());
+        assertEquals("Confirmed", driver.findElement(By.xpath("//div[@id='payment-item-status']/div[2]")).getText());
     }
 
     @After
     public void tearDown() throws Exception {
         driver.quit();
+    }
 }
