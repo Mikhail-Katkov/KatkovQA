@@ -10,7 +10,7 @@ import java.time.Duration;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-public class Payment_System_Test {
+public class TEST {
     private WebDriver driver;
     private String baseUrl;
     JavascriptExecutor js;
