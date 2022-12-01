@@ -1,4 +1,4 @@
-#/!bin/bash надо так #! а не просто # 
+#/!bin/bash Shellcheck говорит надо так #! а не просто # 
 
 options=(   возможность выбора опций
 	'1'
@@ -7,35 +7,35 @@ options=(   возможность выбора опций
 	'4'
 	'5'
 )
-echo 'Please choose an option'  Заголовок
+echo 'Please choose an option'  Заголовок с опциями
 select input in "${options[@]}"; do сюда вставляем значения из оптионс, в зависимости от значения меняется эффект
-	case "$input" in
-		"${options[0]}")  выводит список всех файлов
+	case "$input" in 	вводими значения 1-5
+		"${options[0]}")  выводит ветку в который находимся
 			ls
 			;;
 		"${options[1]}")  выводит дату и время
-			date $'+Time: %T\nDate: %D форматируем дату и время
+			date $'+Time: %T\nDate: %D форматируем время/дату
 			;;
 		"${options[2]}") 
 			read -p 'What file do you wish to check? ' finput при выборе этой опции получим сообщение "Какой файл хотите чекнуть?", Shellcheck говорит что без -r будет искажать обратные косые черты
-			if [[ -d $finput ]]; then
+			if [[ -d $finput ]]; then проверка директории
 				format='%s is a directory.\n' проверка, является ли файл директорией.
-			elif [[ -f $finput ]]; then
-				format='%s is a file.\n' проверка, является ли файл файлом
-			else
-				format='%s does not exist.\n' проверка, существует ли файл 
-			fi
-			printf "$format" "$finput"
+			elif [[ -f $finput ]]; then имя файла
+				format='%s is a file.\n' проверка имени файла
+			else если вводим неверное значение
+				format='%s does not exist.\n' 
+			fi    закрытие
+			printf "$format" "$finput" предложит ввести следующие значения
 			;;
 		"${options[3]}")
 			read -p 'Please enter filename: ' binput Выводит сообщение "Введите имя файла" Shellcheck говорит что без -r будет искажать обратные косые черты
-			cp "$binput"{,.bak}
+			cp "$binput"{,.bak} проверит есть ли файл формата .bak в наличии
 			;;
 		"${options[4]}")
 			break Прерывает цикл
 			;;
 		*)
-			echo 'Not a valid option.'
+			echo 'Not a valid option.' сообщение о невыерно введенных опциях
 			;;
 	esac
-done скрипт как минимум с ошибками
+done закрытие
