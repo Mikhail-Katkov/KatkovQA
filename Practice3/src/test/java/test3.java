@@ -1,16 +1,18 @@
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
-public class Test1 {
+public class test3 {
+
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
@@ -31,17 +33,17 @@ public class Test1 {
         driver.get(baseUrl);
         driver.findElement(By.id("input-card-number")).click();
         driver.findElement(By.id("input-card-number")).clear();
-        driver.findElement(By.id("input-card-number")).sendKeys("4000 0000 0000 0036");
+        driver.findElement(By.id("input-card-number")).sendKeys("5555 5555 5555 4444");
         driver.findElement(By.id("input-card-holder")).click();
         driver.findElement(By.id("input-card-holder")).clear();
         driver.findElement(By.id("input-card-holder")).sendKeys("Li Hao");
         driver.findElement(By.id("card-expires-month")).click();
-        new Select(driver.findElement(By.id("card-expires-month"))).selectByVisibleText("05");
+        new Select(driver.findElement(By.id("card-expires-month"))).selectByVisibleText("02");
         driver.findElement(By.id("card-expires-year")).click();
-        new Select(driver.findElement(By.id("card-expires-year"))).selectByVisibleText("2035");
+        new Select(driver.findElement(By.id("card-expires-year"))).selectByVisibleText("2030");
         driver.findElement(By.id("input-card-cvc")).click();
         driver.findElement(By.id("input-card-cvc")).clear();
-        driver.findElement(By.id("input-card-cvc")).sendKeys("123");
+        driver.findElement(By.id("input-card-cvc")).sendKeys("333");
         driver.findElement(By.id("cvc-hint-toggle")).click();
         driver.findElement(By.id("action-submit")).click();
 

@@ -1,16 +1,18 @@
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
-public class Test1 {
+public class test2nevalid {
+
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
@@ -31,7 +33,7 @@ public class Test1 {
         driver.get(baseUrl);
         driver.findElement(By.id("input-card-number")).click();
         driver.findElement(By.id("input-card-number")).clear();
-        driver.findElement(By.id("input-card-number")).sendKeys("4000 0000 0000 0036");
+        driver.findElement(By.id("input-card-number")).sendKeys("4000 0036");
         driver.findElement(By.id("input-card-holder")).click();
         driver.findElement(By.id("input-card-holder")).clear();
         driver.findElement(By.id("input-card-holder")).sendKeys("Li Hao");
