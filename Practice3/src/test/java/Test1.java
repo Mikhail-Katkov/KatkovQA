@@ -35,7 +35,7 @@ public class Test1 {
         driver.findElement(By.id("input-card-number")).sendKeys("4000 0000 0000 0002");
         driver.findElement(By.id("input-card-holder")).click();
         driver.findElement(By.id("input-card-holder")).clear();
-        driver.findElement(By.id("input-card-holder")).sendKeys("CHUCK MORRISA");
+        driver.findElement(By.id("input-card-holder")).sendKeys("CHUCK MORRIS");
         driver.findElement(By.id("card-expires-month")).click();
         new Select(driver.findElement(By.id("card-expires-month"))).selectByVisibleText("07");
         driver.findElement(By.id("card-expires-year")).click();
@@ -46,7 +46,7 @@ public class Test1 {
         driver.findElement(By.id("action-submit")).click();
         assertEquals("Confirmed", driver.findElement(By.xpath("//div[@id='payment-item-status']/div[2]")).getText());
     }
-
+}
     @After
     public void tearDown() throws Exception {
         driver.quit();
